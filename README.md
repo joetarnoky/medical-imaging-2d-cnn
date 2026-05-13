@@ -1,13 +1,19 @@
-# AutoRegistration
+# medical-imaging-2d-cnn
 
-This piece of code is aimed at automating the process of registering images for the creating of a database to train the CNN.
-The main pieces of code that are used are used are the Auto_Registration_odd_even.py, File_Struct.py, Image_registration.py, metrics.py
+**Medical Imaging CNN for Organ Deformation Prediction**
 
-Auto_Registration_odd_even is the main piece of code, this will bring together all the parts of the code that are used to define functions used and will use them to perform the registrations. The code makes use of a few packages like os and glob which allow us to find the correct files to feed into the system. The file paths are given the the File_struct class to allow all the relevent paths for each of the patients to be stored and called when needed by the code in a easy way that means that we do not need to remember the full path each time we need a specific file. Once the files are stored then the code will check if there is at least one structure in the list of structures in common with the other patient before creating the file for the registration. The code will then calculate the required metrics before creating, during and after the registration process. During the registration there is also a log file that is created.
+This project uses a convolutional neural network to predict organ deformation in radiotherapy from CT scan data. It was developed as part of my master’s research at the University of Manchester.
 
-Image_registration contians the code that uses nipype to perform the registrations in a way that makes it easy to pass the file paths tot he registration code.
+**Overview**
 
-metrics contains a couple of functions that we need to calculate the metrics. 
+The goal of the project was to explore whether deep learning could be used to automate organ deformation prediction in a medical imaging setting. The model was trained on CT scan data and evaluated using statistical performance measures.
 
-File_Struct is needed as this is what allows us to store the files that we will use for the registrations in a callabe instance of the class for each of the patients.  
+**Methods**
+- Built a convolutional neural network in TensorFlow.
+- Prepared CT scan data by slicing 3D scans and using data from the resultant 2D scans as training data.
+- Improved model performance through preprocessing and architectural changes.
+- Evaluated predictions using the Pearson correlation coefficient.
 
+**Results**
+- Uncovered a source of significant overtraining resulting in inflated performane metrics.
+- Once this source of overtraining had been removed, we improved Pearson coefficient from 0.14 to 0.82.
